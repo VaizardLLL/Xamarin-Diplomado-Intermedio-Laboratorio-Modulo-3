@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Contacts
 {
-	public class LoginVM: ObservableBaseObject
+	public class LoginVM : ObservableBaseObject
 	{
 		public ICommand LoginCommand
 		{
@@ -42,7 +42,8 @@ namespace Contacts
 			set { userName = value; OnPropertyChanged(); }
 		}
 
-		public User User {
+		public User User
+		{
 			get;
 			private set;
 		}
@@ -72,28 +73,28 @@ namespace Contacts
 
 		}
 
-		private async Task Login() 
+		private async Task Login()
 		{
 			if (!IsBusy)
 			{
 				IsBusy = true;
-				User = new User(UserName, Password,EMail);
+				User = new User(UserName, Password, EMail);
 
 
-				if(!IsValidEmail)
+				if (!IsValidEmail)
 					OnLoginCompleted(new LoginEventArgs(LoginResult.Error));
-				
+
 				switch (await User.Login())
 				{
 					case LoginResult.Ok:
 						OnLoginCompleted(new LoginEventArgs(LoginResult.Ok));
 						break;
 					case LoginResult.CommunicationError:
-						  OnLoginCompleted(new LoginEventArgs(LoginResult.Error));
+						OnLoginCompleted(new LoginEventArgs(LoginResult.Error));
 						break;
 					default:
 						OnLoginCompleted(new LoginEventArgs(LoginResult.Error));
-					break;
+						break;
 				}
 				IsBusy = false;
 			}

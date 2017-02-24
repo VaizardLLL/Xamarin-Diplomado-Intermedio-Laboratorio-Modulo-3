@@ -61,7 +61,7 @@ namespace Contacts
 			set { mail = value; OnPropertyChanged(); }
 		}
 
-		private ContactDirectory contactsDirectory= new ContactDirectory();
+		private ContactDirectory contactsDirectory;
 		public ContactDirectory ContactsDirectory
 		{
 			get { return contactsDirectory; }
@@ -73,9 +73,8 @@ namespace Contacts
 			await Task.Delay(3000);
 			if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(password))
 			{
-				
-					var startup = new XamarinDiplomado.Participants.Startup.Startup(UserName, EMail, 1, 3);
-					startup.Init();
+				    contactsDirectory = new ContactDirectory();
+					
 					return LoginResult.Ok;
 				
 			}else

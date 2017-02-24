@@ -74,8 +74,7 @@ namespace Contacts
 			if (!string.IsNullOrWhiteSpace(UserName) && !string.IsNullOrWhiteSpace(password))
 			{
 				
-					//var startup = new XamarinDiplomado.Participants.Startup.Startup(UserName, Mail, 1, 3);
-					//startup.Init();
+					
 					return LoginResult.Ok;
 				
 			}else

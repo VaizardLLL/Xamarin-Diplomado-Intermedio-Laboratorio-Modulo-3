@@ -17,6 +17,13 @@ namespace Contacts
 
 		public AzureClient()
 		{
+			createAzureClient();
+		}
+
+		void createAzureClient()
+		{
+			if (string.IsNullOrWhiteSpace(serviceUri))
+				throw new Exception("Debes introducir la url de tu servicio Azure");
 			_client = new MobileServiceClient(serviceUri);
 			var store = new MobileServiceSQLiteStore(dbPath);
 			store.DefineTable<Contact>();

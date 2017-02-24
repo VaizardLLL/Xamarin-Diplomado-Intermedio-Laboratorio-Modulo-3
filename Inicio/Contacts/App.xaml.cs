@@ -7,7 +7,8 @@ namespace Contacts
 		public App()
 		{
 			InitializeComponent();
-
+			var startup = new XamarinDiplomado.Participants.Startup.Startup("UserName", "Mail", 1, 3);
+			startup.Init();
 			MainPage = new NavigationPage(new LoginPage());
 		}
 

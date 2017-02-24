@@ -20,9 +20,10 @@ namespace Contacts
 			//loadRandomContacts();
 		}
 
-		AzureClient client = new AzureClient();
+		AzureClient client;
 		private async void loadContacts()
 		{
+			client = new AzureClient();
 			var contacts = await client.GetContacts();
 			foreach (var contact in contacts)
 			{
